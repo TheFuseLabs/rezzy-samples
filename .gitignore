@@ -45,7 +45,6 @@ yarn-error.log*
 
 # IDE / Editor
 .idea/
-.vscode/
 *.swp
 *.swo
 *~
@@ -58,3 +57,6 @@ Thumbs.db
 .env
 .env.local
 .env.*.local
+
+# Bulk-generate sample (user data)
+samples/bulk-generate/typescript/jobs.json

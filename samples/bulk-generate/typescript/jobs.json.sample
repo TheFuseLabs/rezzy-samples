@@ -1,0 +1,12 @@
+[
+  {
+    "title": "Senior Software Engineer",
+    "company": "Acme Corp",
+    "job_description": "We are looking for a Senior Software Engineer to build scalable systems. Requirements: 5+ years experience, proficiency in TypeScript/Node.js, experience with distributed systems."
+  },
+  {
+    "title": "Machine Learning Engineer",
+    "company": "Tech Co",
+    "job_description": "Join our ML team to design and deploy models. Requirements: MS or PhD in CS or related field, experience with PyTorch or TensorFlow, strong Python skills."
+  }
+]
