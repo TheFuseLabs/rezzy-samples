@@ -1,0 +1,18 @@
+{
+  "name": "rezzy-bulk-generate",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "biome check --write .",
+    "generate:resume": "tsx src/index.ts --mode resume",
+    "generate:cover-letter": "tsx src/index.ts --mode cover-letter",
+    "generate:both": "tsx src/index.ts --mode both"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@types/node": "^25.5.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}

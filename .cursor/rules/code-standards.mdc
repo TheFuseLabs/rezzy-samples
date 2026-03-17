@@ -1,0 +1,13 @@
+---
+description: Code Standards for the Rezzy Samples Repo
+globs: *
+alwaysApply: true
+---
+
+# Code Standards for the Rezzy Samples Repo
+
+- DO NOT write comments or docstrings for functions and classes.
+- DO NOT write comments unless absolutely necessary to explain something that is not obvious.
+- DO NOT create markdown files to explain your changes unless I ask you to do so.
+- DO NOT remove comments or docstrings that are already in the codebase.
+- Make sure all the imports are on the top of the file.
