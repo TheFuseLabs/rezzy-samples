@@ -36,6 +36,7 @@ This repository contains sample projects that show how to use the [Rezzy API](ht
 | Sample                                                         | Description                                                                                                |
 | -------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
 | [bulk-generate (TypeScript)](samples/bulk-generate/typescript) | Generate resumes and/or cover letters in bulk from a `jobs.json` file. Supports rate limiting and retries. |
+| [bulk-generate (Python)](samples/bulk-generate/python)         | Python/uv version of bulk generate with the same behavior.                                                |
 
 How to run each sample is in that sample folder’s README.
 

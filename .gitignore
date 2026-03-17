@@ -59,4 +59,4 @@ Thumbs.db
 .env.*.local
 
 # Bulk-generate sample (user data)
-samples/bulk-generate/typescript/jobs.json
+jobs.json
