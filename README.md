@@ -39,39 +39,27 @@ This repository contains sample projects that show how to use the [Rezzy API](ht
 
 How to run each sample is in that sample folder’s README.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Contributing
 
 Refer to [CONTRIBUTING.md](CONTRIBUTING.md) for how to contribute.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Code of Conduct
 
 Refer to [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md) for our code of conduct.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## License
 
 Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 ## Contact
 
 Reach out to us at [admin@thefuselabs.com](mailto:admin@thefuselabs.com) for any questions or feedback.
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Top contributors
 
 <a href="https://github.com/TheFuseLabs/rezzy-samples/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=TheFuseLabs/rezzy-samples" alt="contrib.rocks image" />
 </a>
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 [contributors-shield]: https://img.shields.io/github/contributors/TheFuseLabs/rezzy-samples.svg?style=for-the-badge
 [contributors-url]: https://github.com/TheFuseLabs/rezzy-samples/graphs/contributors
