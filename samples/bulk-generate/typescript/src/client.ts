@@ -2,7 +2,6 @@ import type { ApiResponse, CoverLetterCreateData, ResumeCreateData } from "./typ
 
 const BASE_URL = "https://api.rezzy.dev/v1";
 
-// Sleep between requests to stay under free-tier limit (10 req/60s). See https://docs.rezzy.dev/rate-limiting
 const RATE_LIMIT_SLEEP_MS = 7000;
 
 function sleep(ms: number): Promise<void> {
@@ -51,11 +50,16 @@ export class RezzyClient {
   async createResume(
     title: string,
     jobDescription: string,
+    companyUrl?: string,
   ): Promise<ApiResponse<ResumeCreateData>> {
-    const result = await this.request<ResumeCreateData>("POST", "/resume/create", {
+    const body: { title: string; job_description: string; company_url?: string } = {
       title,
       job_description: jobDescription,
-    });
+    };
+    if (companyUrl) {
+      body.company_url = companyUrl;
+    }
+    const result = await this.request<ResumeCreateData>("POST", "/resume/create", body);
     return result;
   }
 
@@ -75,8 +79,9 @@ export class RezzyClient {
   async createResumeWithRateLimit(
     title: string,
     jobDescription: string,
+    companyUrl?: string,
   ): Promise<ApiResponse<ResumeCreateData>> {
-    const result = await this.createResume(title, jobDescription);
+    const result = await this.createResume(title, jobDescription, companyUrl);
     await sleep(RATE_LIMIT_SLEEP_MS);
     return result;
   }

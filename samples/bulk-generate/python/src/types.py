@@ -1,10 +1,11 @@
 from typing import TypedDict
 
 
-class Job(TypedDict):
+class Job(TypedDict, total=False):
     title: str
     company: str
     job_description: str
+    company_url: str
 
 
 class ResumeCreateData(TypedDict):

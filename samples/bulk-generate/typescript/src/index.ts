@@ -27,7 +27,12 @@ async function run(): Promise<void> {
 
     if (mode === "resume" || mode === "both") {
       try {
-        const res = await client.createResumeWithRateLimit(job.title, job.job_description);
+        logger.progress("Creating resume...");
+        const res = await client.createResumeWithRateLimit(
+          job.title,
+          job.job_description,
+          job.company_url,
+        );
         results.push({
           title: job.title,
           type: "resume",
@@ -42,6 +47,7 @@ async function run(): Promise<void> {
 
     if (mode === "cover-letter" || mode === "both") {
       try {
+        logger.progress("Creating cover letter...");
         const res = await client.createCoverLetterWithRateLimit(
           job.title,
           job.job_description,

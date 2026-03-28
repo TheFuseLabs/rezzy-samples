@@ -2,6 +2,7 @@ export interface Job {
   title: string;
   company: string;
   job_description: string;
+  company_url?: string;
 }
 
 export interface ResumeCreateData {

@@ -6,6 +6,7 @@ GREEN = "\x1b[32m"
 YELLOW = "\x1b[33m"
 RED = "\x1b[31m"
 CYAN = "\x1b[36m"
+GRAY = "\x1b[90m"
 
 
 class _Logger:
@@ -28,6 +29,10 @@ class _Logger:
     @staticmethod
     def dim(message: str) -> None:
         print(f"{DIM}{message}{RESET}")
+
+    @staticmethod
+    def progress(message: str) -> None:
+        print(f"{GRAY}⋯{RESET} {message}")
 
 
 logger = _Logger()

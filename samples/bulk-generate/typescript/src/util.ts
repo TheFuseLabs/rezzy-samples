@@ -48,6 +48,10 @@ export function loadJobs(): Job[] {
       logger.error("Each job must have title, company, and job_description (strings)");
       process.exit(1);
     }
+    if (job.company_url !== undefined && typeof job.company_url !== "string") {
+      logger.error("When set, company_url must be a string");
+      process.exit(1);
+    }
   }
   return jobs;
 }

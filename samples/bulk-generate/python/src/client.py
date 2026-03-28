@@ -45,8 +45,11 @@ class RezzyClient:
             raise RuntimeError(msg or f"HTTP {resp.status_code}")
         return data
 
-    def create_resume(self, title: str, job_description: str) -> ApiResponse:
-        result = self._request("POST", "/resume/create", {"title": title, "job_description": job_description})
+    def create_resume(self, title: str, job_description: str, company_url: str | None = None) -> ApiResponse:
+        body: dict[str, Any] = {"title": title, "job_description": job_description}
+        if company_url:
+            body["company_url"] = company_url
+        result = self._request("POST", "/resume/create", body)
         return result
 
     def create_cover_letter(
@@ -60,9 +63,9 @@ class RezzyClient:
         return result
 
     def create_resume_with_rate_limit(
-        self, title: str, job_description: str
+        self, title: str, job_description: str, company_url: str | None = None
     ) -> dict[str, Any]:
-        out = self.create_resume(title, job_description)
+        out = self.create_resume(title, job_description, company_url)
         time.sleep(RATE_LIMIT_SLEEP_SEC)
         return out
 

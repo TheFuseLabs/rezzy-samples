@@ -28,8 +28,9 @@ def _run() -> None:
 
         if mode in ("resume", "both"):
             try:
+                logger.progress("Creating resume...")
                 res = client.create_resume_with_rate_limit(
-                    job["title"], job["job_description"]
+                    job["title"], job["job_description"], job.get("company_url")
                 )
                 data = res.get("data") or {}
                 results.append({
@@ -44,6 +45,7 @@ def _run() -> None:
 
         if mode in ("cover-letter", "both"):
             try:
+                logger.progress("Creating cover letter...")
                 res = client.create_cover_letter_with_rate_limit(
                     job["title"], job["job_description"], job["company"]
                 )

@@ -38,6 +38,7 @@ Generate resumes and/or cover letters in bulk from a `jobs.json` file using the 
    - `title` – Job title (e.g. "Senior Software Engineer")
    - `company` – Company name (required for cover letters)
    - `job_description` – Full job description text
+   - `company_url` – HTTPS company site; when set, it is sent on [resume create](https://docs.rezzy.dev/resume/create) so Rezzy can use company context
 
    Use unique names for each resume and cover letter. The API call will fail if a resume or cover letter with the same name already exists on the platform.
 

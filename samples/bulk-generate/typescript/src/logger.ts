@@ -4,6 +4,7 @@ const GREEN = "\x1b[32m";
 const YELLOW = "\x1b[33m";
 const RED = "\x1b[31m";
 const CYAN = "\x1b[36m";
+const GRAY = "\x1b[90m";
 
 export const logger = {
   info(message: string): void {
@@ -20,5 +21,8 @@ export const logger = {
   },
   dim(message: string): void {
     console.log(`${DIM}${message}${RESET}`);
+  },
+  progress(message: string): void {
+    console.log(`${GRAY}⋯${RESET} ${message}`);
   },
 };
