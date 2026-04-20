@@ -40,12 +40,13 @@ def load_jobs() -> list[Job]:
         logger.error("jobs.json must be a non-empty array of jobs")
         sys.exit(1)
     for job in jobs:
-        if (
-            not isinstance(job.get("title"), str)
-            or not isinstance(job.get("job_description"), str)
-            or not isinstance(job.get("company"), str)
+        if not isinstance(job.get("title"), str) or not isinstance(
+            job.get("job_description"), str
         ):
-            logger.error("Each job must have title, company, and job_description (strings)")
+            logger.error("Each job must have title and job_description (strings)")
+            sys.exit(1)
+        if "company" in job and not isinstance(job.get("company"), str):
+            logger.error("When set, company must be a string")
             sys.exit(1)
         if "company_url" in job and not isinstance(job.get("company_url"), str):
             logger.error("When set, company_url must be a string")

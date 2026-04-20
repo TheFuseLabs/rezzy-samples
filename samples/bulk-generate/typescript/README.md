@@ -34,11 +34,15 @@ Generate resumes and/or cover letters in bulk from a `jobs.json` file using the 
    cp jobs.json.sample jobs.json
    ```
 
-5. Edit `jobs.json` with your jobs. Each entry must have:
+5. Edit `jobs.json` with your jobs. Each entry **requires**:
+
    - `title` – Job title (e.g. "Senior Software Engineer")
-   - `company` – Company name (required for cover letters)
    - `job_description` – Full job description text
-   - `company_url` – HTTPS company site; when set, it is sent on [resume create](https://docs.rezzy.dev/resume/create) so Rezzy can use company context
+
+   **Optional:**
+
+   - `company` – Label in progress logs (e.g. "Acme Corp"). Omit it if you do not need a name in the log line (the script prints `@ —` instead).
+   - `company_url` – HTTPS company site. When set, it is included on [resume create](https://docs.rezzy.dev/resume/create) and [cover letter create](https://docs.rezzy.dev/cover-letter/create). Omit it for either request type if you do not want that context.
 
    Use unique names for each resume and cover letter. The API call will fail if a resume or cover letter with the same name already exists on the platform.
 
@@ -55,7 +59,7 @@ Run from this directory so `jobs.json` is found:
 ## What to expect
 
 - The script sends one API request per job (and per type when using `both`). Each request is queued on Rezzy’s side; the script does not wait for the full generation to finish.
-- Progress is logged for each job (e.g. `[1/3] Senior Software Engineer @ Acme Corp`). After each successful request you’ll see “Resume queued” or “Cover letter queued.”
+- Progress is logged for each job (e.g. `[1/3] Senior Software Engineer @ Acme Corp`, or `@ —` when `company` is omitted). After each successful request you’ll see “Resume queued” or “Cover letter queued.”
 - Requests are spaced to respect [API rate limits](https://docs.rezzy.dev/rate-limiting). If you get a 429, the script waits and retries automatically.
 - At the end, the script prints the dashboard URL so you can open it and see all your items.
 

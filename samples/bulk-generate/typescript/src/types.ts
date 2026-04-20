@@ -1,7 +1,7 @@
 export interface Job {
   title: string;
-  company: string;
   job_description: string;
+  company?: string;
   company_url?: string;
 }
 

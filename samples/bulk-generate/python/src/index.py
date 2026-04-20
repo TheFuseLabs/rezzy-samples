@@ -24,7 +24,8 @@ def _run() -> None:
         logger.info(f"Check status at: {COVER_LETTERS_DASHBOARD_URL}")
 
     for i, job in enumerate(jobs):
-        logger.info(f"[{i + 1}/{len(jobs)}] {job['title']} @ {job['company']}")
+        label = job.get("company") or "—"
+        logger.info(f"[{i + 1}/{len(jobs)}] {job['title']} @ {label}")
 
         if mode in ("resume", "both"):
             try:
@@ -47,7 +48,7 @@ def _run() -> None:
             try:
                 logger.progress("Creating cover letter...")
                 res = client.create_cover_letter_with_rate_limit(
-                    job["title"], job["job_description"], job["company"]
+                    job["title"], job["job_description"], job.get("company_url")
                 )
                 data = res.get("data") or {}
                 results.append({

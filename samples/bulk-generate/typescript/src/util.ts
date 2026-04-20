@@ -40,12 +40,12 @@ export function loadJobs(): Job[] {
     process.exit(1);
   }
   for (const job of jobs) {
-    if (
-      typeof job.title !== "string" ||
-      typeof job.job_description !== "string" ||
-      typeof job.company !== "string"
-    ) {
-      logger.error("Each job must have title, company, and job_description (strings)");
+    if (typeof job.title !== "string" || typeof job.job_description !== "string") {
+      logger.error("Each job must have title and job_description (strings)");
+      process.exit(1);
+    }
+    if (job.company !== undefined && typeof job.company !== "string") {
+      logger.error("When set, company must be a string");
       process.exit(1);
     }
     if (job.company_url !== undefined && typeof job.company_url !== "string") {

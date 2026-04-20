@@ -1,11 +1,18 @@
 from typing import TypedDict
 
 
-class Job(TypedDict, total=False):
+class _JobRequired(TypedDict):
     title: str
-    company: str
     job_description: str
+
+
+class _JobOptional(TypedDict, total=False):
+    company: str
     company_url: str
+
+
+class Job(_JobRequired, _JobOptional):
+    pass
 
 
 class ResumeCreateData(TypedDict):

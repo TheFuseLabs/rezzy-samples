@@ -66,13 +66,16 @@ export class RezzyClient {
   async createCoverLetter(
     title: string,
     jobDescription: string,
-    companyName: string,
+    companyUrl?: string,
   ): Promise<ApiResponse<CoverLetterCreateData>> {
-    const result = await this.request<CoverLetterCreateData>("POST", "/cover-letter/create", {
+    const body: { title: string; job_description: string; company_url?: string } = {
       title,
       job_description: jobDescription,
-      company_name: companyName,
-    });
+    };
+    if (companyUrl) {
+      body.company_url = companyUrl;
+    }
+    const result = await this.request<CoverLetterCreateData>("POST", "/cover-letter/create", body);
     return result;
   }
 
@@ -89,9 +92,9 @@ export class RezzyClient {
   async createCoverLetterWithRateLimit(
     title: string,
     jobDescription: string,
-    companyName: string,
+    companyUrl?: string,
   ): Promise<ApiResponse<CoverLetterCreateData>> {
-    const result = await this.createCoverLetter(title, jobDescription, companyName);
+    const result = await this.createCoverLetter(title, jobDescription, companyUrl);
     await sleep(RATE_LIMIT_SLEEP_MS);
     return result;
   }

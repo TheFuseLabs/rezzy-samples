@@ -53,13 +53,12 @@ class RezzyClient:
         return result
 
     def create_cover_letter(
-        self, title: str, job_description: str, company_name: str
+        self, title: str, job_description: str, company_url: str | None = None
     ) -> ApiResponse:
-        result = self._request(
-            "POST",
-            "/cover-letter/create",
-            {"title": title, "job_description": job_description, "company_name": company_name},
-        )
+        body: dict[str, Any] = {"title": title, "job_description": job_description}
+        if company_url:
+            body["company_url"] = company_url
+        result = self._request("POST", "/cover-letter/create", body)
         return result
 
     def create_resume_with_rate_limit(
@@ -70,8 +69,8 @@ class RezzyClient:
         return out
 
     def create_cover_letter_with_rate_limit(
-        self, title: str, job_description: str, company_name: str
+        self, title: str, job_description: str, company_url: str | None = None
     ) -> dict[str, Any]:
-        out = self.create_cover_letter(title, job_description, company_name)
+        out = self.create_cover_letter(title, job_description, company_url)
         time.sleep(RATE_LIMIT_SLEEP_SEC)
         return out

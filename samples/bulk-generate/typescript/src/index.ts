@@ -23,7 +23,8 @@ async function run(): Promise<void> {
 
   for (let i = 0; i < jobs.length; i++) {
     const job = jobs[i];
-    logger.info(`[${i + 1}/${jobs.length}] ${job.title} @ ${job.company}`);
+    const label = job.company ?? "—";
+    logger.info(`[${i + 1}/${jobs.length}] ${job.title} @ ${label}`);
 
     if (mode === "resume" || mode === "both") {
       try {
@@ -51,7 +52,7 @@ async function run(): Promise<void> {
         const res = await client.createCoverLetterWithRateLimit(
           job.title,
           job.job_description,
-          job.company,
+          job.company_url,
         );
         results.push({
           title: job.title,
